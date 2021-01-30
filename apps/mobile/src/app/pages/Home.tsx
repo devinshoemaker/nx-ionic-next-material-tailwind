@@ -14,7 +14,9 @@ const Home: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Blank</IonTitle>
+          <IonTitle>
+            <span className="text-purple-600">Blank</span>
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
