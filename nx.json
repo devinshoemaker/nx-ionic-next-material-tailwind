@@ -1,14 +1,9 @@
 {
   "npmScope": "nx-ionic-next-material-tailwind",
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "implicitDependencies": {
     "workspace.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
@@ -18,27 +13,22 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e",
+          "build-storybook"
+        ]
       }
     }
   },
   "projects": {
-    "mobile": {
-      "tags": []
-    },
-    "mobile-e2e": {
-      "tags": [],
-      "implicitDependencies": ["mobile"]
-    },
-    "web": {
-      "tags": []
-    },
-    "shared": {
-      "tags": []
-    },
-    "web-e2e": {
-      "tags": [],
-      "implicitDependencies": ["web"]
-    }
+    "mobile": { "tags": [] },
+    "mobile-e2e": { "tags": [], "implicitDependencies": ["mobile"] },
+    "web": { "tags": [] },
+    "shared": { "tags": [] },
+    "web-e2e": { "tags": [], "implicitDependencies": ["web"] },
+    "shared-e2e": { "tags": [], "implicitDependencies": ["shared"] }
   }
 }
