@@ -23,10 +23,6 @@
     }
   },
   "projects": {
-    "web-app-e2e": {
-      "tags": [],
-      "implicitDependencies": ["web"]
-    },
     "mobile": {
       "tags": []
     },
@@ -36,6 +32,13 @@
     },
     "web": {
       "tags": []
+    },
+    "shared": {
+      "tags": []
+    },
+    "web-e2e": {
+      "tags": [],
+      "implicitDependencies": ["web"]
     }
   }
 }
