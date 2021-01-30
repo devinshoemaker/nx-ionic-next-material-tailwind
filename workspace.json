@@ -1,63 +1,23 @@
 {
   "version": 2,
-  "projects": {
-    "web-app": {
-      "root": "apps/web-app",
-      "sourceRoot": "apps/web-app",
-      "projectType": "application",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/next:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "root": "apps/web-app",
-            "outputPath": "dist/apps/web-app"
-          },
-          "configurations": {
-            "production": {}
-          }
-        },
-        "serve": {
-          "executor": "@nrwl/next:server",
-          "options": {
-            "buildTarget": "web-app:build",
-            "dev": true
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "web-app:build:production",
-              "dev": false
-            }
-          }
-        },
-        "export": {
-          "executor": "@nrwl/next:export",
-          "options": {
-            "buildTarget": "web-app:build:production"
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/web-app/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/web-app"
-          ],
-          "options": {
-            "jestConfig": "apps/web-app/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
+  "cli": {
+    "defaultCollection": "@nrwl/next"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "babel": true
       }
     },
+    "@nrwl/next": {
+      "application": {
+        "style": "css",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "web",
+  "projects": {
     "web-app-e2e": {
       "root": "apps/web-app-e2e",
       "sourceRoot": "apps/web-app-e2e/src",
@@ -68,20 +28,18 @@
           "options": {
             "cypressConfig": "apps/web-app-e2e/cypress.json",
             "tsConfig": "apps/web-app-e2e/tsconfig.e2e.json",
-            "devServerTarget": "web-app:serve"
+            "devServerTarget": "web:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "web-app:serve:production"
+              "devServerTarget": "web:serve:production"
             }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/web-app-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/web-app-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -93,9 +51,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/mobile",
             "index": "apps/mobile/src/index.html",
@@ -106,9 +62,7 @@
               "apps/mobile/src/assets",
               "apps/mobile/src/manifest.json"
             ],
-            "styles": [
-              "apps/mobile/src/styles.css"
-            ],
+            "styles": ["apps/mobile/src/styles.css"],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -151,16 +105,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/mobile/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/mobile/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/mobile"
-          ],
+          "outputs": ["coverage/apps/mobile"],
           "options": {
             "jestConfig": "apps/mobile/jest.config.js",
             "passWithNoTests": true
@@ -270,29 +220,61 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/mobile-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/mobile-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "web": {
+      "root": "apps/web",
+      "sourceRoot": "apps/web",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/next:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "root": "apps/web",
+            "outputPath": "dist/apps/web"
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/next:server",
+          "options": {
+            "buildTarget": "web:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "web:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "executor": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "web:build:production"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/web/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/web"],
+          "options": {
+            "jestConfig": "apps/web/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
     }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/next"
-  },
-  "generators": {
-    "@nrwl/react": {
-      "application": {
-        "babel": true
-      }
-    },
-    "@nrwl/next": {
-      "application": {
-        "style": "css",
-        "linter": "eslint"
-      }
-    }
-  },
-  "defaultProject": "web-app"
+  }
 }
