@@ -10,7 +10,7 @@ export function Index() {
    */
   return (
     <div className={styles.page}>
-      <h2>Resources &amp; Tools</h2>
+      <h2 className="text-purple-600">Resources &amp; Tools</h2>
       <p>Thank you for using and showing some ♥ for Nx.</p>
       <div className="flex github-star-container">
         <a
